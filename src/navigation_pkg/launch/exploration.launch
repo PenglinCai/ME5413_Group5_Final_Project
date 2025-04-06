@@ -1,0 +1,8 @@
+<launch>
+  <!-- 启动 me5413_world 的 world.launch -->
+  <include file="$(find me5413_world)/launch/world.launch" />
+
+  <!-- 启动 navigation_pkg 的 navigation.launch -->
+  <include file="$(find navigation_pkg)/launch/navigation.launch" />
+</launch>
+
