@@ -169,16 +169,6 @@ roslaunch me5413_world navigation.launch
   * Unlock the blockade on the bridge by publishing a `true` message (`std_msgs/Bool`) to the `/cmd_open_bridge` topic
   * Dock at the destination box with the least number of occurance
 
-## Contribution
-
-You are welcome contributing to this repo by opening a pull-request
-
-We are following:
-
-* [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html),
-* [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#main),
-* [ROS C++ Style Guide](http://wiki.ros.org/CppStyleGuide)
-
 ## License
 
 The [ME5413_Final_Project](https://github.com/NUS-Advanced-Robotics-Centre/ME5413_Final_Project) is released under the [MIT License](https://github.com/NUS-Advanced-Robotics-Centre/ME5413_Final_Project/blob/main/LICENSE)
