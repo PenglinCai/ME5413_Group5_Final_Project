@@ -52,8 +52,8 @@ After forking this repo to your own github:
 ```bash
 # Clone your own fork of this repo (assuming home here `~/`)
 cd
-git clone https://github.com/<YOUR_GITHUB_USERNAME>/ME5413_Final_Project.git
-cd ME5413_Final_Project
+git clone https://github.com/<YOUR_GITHUB_USERNAME>/ME5413_Group5_Final_Project.git
+cd ME5413_Group5_Final_Project
 
 # Install all dependencies
 rosdep install --from-paths src --ignore-src -r -y
@@ -86,7 +86,7 @@ There are two sources of models needed:
 
   ```bash
   # Copy the customized models into the `~/.gazebo/models` directory
-  cp -r ~/ME5413_Final_Project/src/me5413_world/models/* ~/.gazebo/models
+  cp -r ~/ME5413_Group5_Final_Project/src/me5413_world/models/* ~/.gazebo/models
   ```
 
 ## Usage
