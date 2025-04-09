@@ -145,7 +145,7 @@ roslaunch me5413_world navigation.launch
 
 ![rviz_navigation_image](src/me5413_world/media/rviz_navigation.png)
 
-## Student Tasks
+## Tasks Processes
 
 ### 1. Map the environment
 
