@@ -8,7 +8,29 @@ NUS ME5413 Autonomous Mobile Robotics Final Project - Group5
 ![Python](https://img.shields.io/badge/Code-Python-informational?style=flat&logo=Python&logoColor=white&color=2bbc8a)
 
 ![cover_image](src/me5413_world/media/gz_world.png)
+## Tasks Description
 
+### 1. Map the environment
+
+* You may use any SLAM algorithm you like, any type:
+  * 2D LiDAR
+  * 3D LiDAR
+  * Vision
+  * Multi-sensor
+* Verify your SLAM accuracy by comparing your odometry with the published `/gazebo/ground_truth/state` topic (`nav_msgs::Odometry`), which contains the gournd truth odometry of the robot.
+* You may want to use tools like [EVO](https://github.com/MichaelGrupp/evo) to quantitatively evaluate the performance of your SLAM algorithm.
+
+### 2. Using your own map, navigate your robot
+
+* We have provided you a GUI in RVIZ that allows you to click and generate/clear the random objects in the gazebo world:
+  
+  ![rviz_panel_image](src/me5413_world/media/control_panel.png)
+
+* From the starting point, move to one of the four given destination boxes at the end of the map:
+  * Count the number of occurance of each type of box (e.g. box 1, 2, 3, 4, the box numbers are randomly generated)
+  * Cross the bridge (the location of the bridge is randomly generated)
+  * Unlock the blockade on the bridge by publishing a `true` message (`std_msgs/Bool`) to the `/cmd_open_bridge` topic
+  * Dock at the destination box with the least number of occurance
 ## Dependencies
 
 * System Requirements:
@@ -145,29 +167,7 @@ roslaunch me5413_world navigation.launch
 
 ![rviz_navigation_image](src/me5413_world/media/rviz_navigation.png)
 
-## Tasks Processes
 
-### 1. Map the environment
-
-* You may use any SLAM algorithm you like, any type:
-  * 2D LiDAR
-  * 3D LiDAR
-  * Vision
-  * Multi-sensor
-* Verify your SLAM accuracy by comparing your odometry with the published `/gazebo/ground_truth/state` topic (`nav_msgs::Odometry`), which contains the gournd truth odometry of the robot.
-* You may want to use tools like [EVO](https://github.com/MichaelGrupp/evo) to quantitatively evaluate the performance of your SLAM algorithm.
-
-### 2. Using your own map, navigate your robot
-
-* We have provided you a GUI in RVIZ that allows you to click and generate/clear the random objects in the gazebo world:
-  
-  ![rviz_panel_image](src/me5413_world/media/control_panel.png)
-
-* From the starting point, move to one of the four given destination boxes at the end of the map:
-  * Count the number of occurance of each type of box (e.g. box 1, 2, 3, 4, the box numbers are randomly generated)
-  * Cross the bridge (the location of the bridge is randomly generated)
-  * Unlock the blockade on the bridge by publishing a `true` message (`std_msgs/Bool`) to the `/cmd_open_bridge` topic
-  * Dock at the destination box with the least number of occurance
 
 ## License
 
