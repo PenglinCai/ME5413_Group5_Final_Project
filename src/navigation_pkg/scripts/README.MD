@@ -1,62 +1,31 @@
 # ROS Navigation and Recognition System Overview
 
-This document provides a brief overview of a multi-component ROS-based system that performs various navigation and recognition tasks. The code is separated into several modules, each responsible for a specific part of the overall system. The following sections describe each file in sequence.
+This document briefly describes a multi-module ROS system for navigation and digit recognition. Each module is responsible for a specific task.
 
----
+1. snake_path.py  
+   - Subscribes to AMCL for real-time pose updates.
+   - Sends navigation goals with a timeout based on position threshold.
+   - Generates waypoints in a snake pattern over a specified area.
+   - Sequentially navigates through all waypoints.
 
-## 1. `snake_path.py`  
-This module implements a **snake pattern navigation** algorithm using ROS. Its key functionalities include:  
-- **AMCL Pose Subscription**: Subscribes to the `amcl_pose` topic to continuously update the robot's current pose using AMCL.  
-- **Goal Sending with Timeout**: Utilizes an action client to send navigation goals to the `move_base` server. The function `send_goal` monitors the robot’s progress and cancels the goal when the distance threshold is met or when a timeout occurs.  
-- **Snake Pattern Waypoints Generation**: Creates a series of waypoints in a horizontal snake pattern over a defined rectangular area. This method allows the robot to systematically cover a region.  
-- **Sequential Navigation**: The main routine initializes the ROS node, sends an initial positioning goal, and then iterates through the generated waypoints with a 40-second timeout for each goal.  
+2. subscribe_box_pos.py  
+   - Listens to block detection data on the /found_blocks_info topic.
+   - Sends navigation goals with checks for both position and orientation.
+   - Optimizes the path using the Held-Karp algorithm (TSP route).
+   - Integrates visual recognition for digits and saves the results to a file.
 
-:contentReference[oaicite:0]{index=0}
+3. pub_bridge_pos.py  
+   - Receives and parses bridge information messages.
+   - Extracts coordinate data and publishes a corresponding navigation goal.
 
----
+4. cross_bridge.py  
+   - Navigates to two initial fixed points to set the starting position.
+   - Listens for a bridge crossing command, adjusts the target goal, and sends it.
+   - Publishes a command to open the bridge and drives straight for a set distance.
+   - Shuts down after task completion.
 
-## 2. `subscribe_box_pos.py`  
-This module focuses on **block detection and digit recognition through navigation**. Its primary functions include:  
-- **Matrix Data Subscription**: Listens to the `/found_blocks_info` topic, which contains information about detected blocks (including positions and recognized digits).  
-- **AMCL Pose Callback**: Similar to the first module, it updates the current position using the AMCL callback.  
-- **Goal Sending with Dual Thresholds**: Sends navigation goals with additional checks for both positional and orientation thresholds. The goal is canceled once both are within acceptable error limits or when a timeout occurs.  
-- **TSP Route Optimization**: Implements an optimal path ordering (using the Held-Karp algorithm) that calculates the shortest route visiting all target blocks.  
-- **Visual Recognition Integration**: After navigating to each target point, the module initiates a service call to start and stop visual recognition, processes the result using regex, and publishes the sequence of recognized digits.  
-- **Result Saving**: Writes the list of recognized digits to a text file for later use.  
-
-:contentReference[oaicite:1]{index=1}
-
----
-
-## 3. `pub_bridge_pos.py`  
-This module manages **bridge-related navigation goals**. Key points include:  
-- **Bridge Information Parsing**: Subscribes to a topic (e.g., `/bridge_info`) that transmits bridge details as formatted strings.  
-- **Coordinate Extraction**: Uses regular expressions to extract coordinate information (primarily from the "Center" field) and computes the corresponding navigation goal.  
-- **Navigation Goal Publishing**: Publishes a `PoseStamped` message to the `/navigation_goal` topic based on the extracted coordinates, with a predetermined fixed x-coordinate and an adjusted orientation.  
-
-:contentReference[oaicite:2]{index=2}
-
----
-
-## 4. `cross_bridge.py`  
-This module acts as a **navigation controller for crossing a bridge**. Its operations include:  
-- **Initial Navigation**: Sends the robot to two initial predefined goals with a specific timeout, ensuring the robot is in a known position before advancing.  
-- **AMCL Position Monitoring**: Continuously monitors the robot’s current pose using AMCL to determine the progress towards each goal.  
-- **Goal Reception and Adjustment**: Listens to the `/navigation_goal` topic for a bridge crossing command, applies an offset to the received goal to adjust for alignment, and sends it to the `move_base` server.  
-- **Bridge Operation**: Once the target is reached, it publishes a Boolean message on `/cmd_open_bridge` to trigger the bridge-opening mechanism.  
-- **Straight-Line Driving**: After a successful navigation and bridge activation, the module commands the robot to drive straight for a specified distance.  
-- **Task Completion**: After completing the sequence, the node gracefully shuts down.  
-
-:contentReference[oaicite:3]{index=3}
-
----
-
-## 5. `after_bridge.py`  
-This module handles the **post-bridge digit recognition and target selection for further navigation**. Its functionalities include:  
-- **Digit Recognition Client Setup**: Initializes a client that interacts with digit recognition services, starting and stopping recognition with proper logging.  
-- **Loading Recognized Digit Sequence**: Reads a file (`recognized_digits.txt`) generated by previous modules, and parses the sequence of recognized digits.  
-- **Target Digit Determination**: Determines the target digit for further operations based on the digit that appears the least frequently in the sequence.  
-- **Navigating to Box Positions**: Defines a set of target positions (boxes). For each box, the robot navigates to the specified coordinates and performs another round of digit recognition.  
-- **Target Box Identification**: If the recognized digit at a box matches the target digit, the task is considered complete, and the node shuts down.  
-- **Retry Mechanism**: Incorporates a retry mechanism for the recognition process to ensure robust digit detection.  
-
+5. after_bridge.py  
+   - Sets up a digit recognition client.
+   - Loads recognized digits from a file and identifies the least frequent digit.
+   - Navigates to predefined box positions and performs additional digit recognition.
+   - Stops the mission upon matching the target digit, with retry logic for recognition.
