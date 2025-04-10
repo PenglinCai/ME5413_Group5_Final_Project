@@ -66,7 +66,7 @@ def main():
     run_once("cross_bridge.py")
     
     # New: After cross_bridge.py completes, run after_bridge_test.py
-    run_once("after_bridge_test.py")
+    run_once("after_bridge.py")
 
     # Terminate all continuously running scripts
     print("All states completed. Terminating continuously running scripts...")
