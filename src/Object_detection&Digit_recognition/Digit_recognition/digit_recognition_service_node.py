@@ -5,25 +5,25 @@ from digit_recognizer import DigitRecognizer
 
 class DigitRecognitionServiceNode:
     def __init__(self):
-        # 创建数字识别器实例（内部已订阅 /front/image_raw）
+        # Create an instance of the digit recognizer (it subscribes to /front/image_raw internally)
         self.recognizer = DigitRecognizer()
-        # 定义 ROS 服务接口，用 Trigger 服务类型实现简单的无参请求应答
+        # Define ROS service interfaces using the Trigger service type (simple request-response with no parameters)
         self.start_srv = rospy.Service('start_recognition', Trigger, self.handle_start)
         self.stop_srv  = rospy.Service('stop_recognition', Trigger, self.handle_stop)
-        rospy.loginfo("DigitRecognitionServiceNode 启动完毕，等待调用……")
+        rospy.loginfo("DigitRecognitionServiceNode started, waiting for service calls...")
 
     def handle_start(self, req):
-        rospy.loginfo("收到启动识别请求。")
+        rospy.loginfo("Received request to start recognition.")
         self.recognizer.start_recognition()
-        return TriggerResponse(success=True, message="数字识别已启动。")
+        return TriggerResponse(success=True, message="Digit recognition started.")
 
     def handle_stop(self, req):
-        rospy.loginfo("收到停止识别请求。")
+        rospy.loginfo("Received request to stop recognition.")
         best_digit = self.recognizer.stop_recognition()
         if best_digit is None:
-            message = "未检测到有效数字。"
+            message = "No valid digit detected."
         else:
-            message = f"最佳识别结果为：{best_digit}"
+            message = f"Best recognized digit: {best_digit}"
         rospy.loginfo(message)
         return TriggerResponse(success=True, message=message)
 
