@@ -137,35 +137,8 @@ roslaunch me5413_world manual.launch
 
 ### 2. Mapping
 
-After launching **Step 0**, in the second terminal:
-
-```bash
-# Launch GMapping
-roslaunch me5413_world mapping.launch
-```
-
-After finishing mapping, run the following command in the thrid terminal to save the map:
-
-```bash
-# Save the map as `my_map` in the `maps/` folder
-roscd me5413_world/maps/
-rosrun map_server map_saver -f my_map map:=/map
-```
-
-![rviz_nmapping_image](src/me5413_world/media/rviz_mapping.png)
 
 ### 3. Navigation
-
-Once completed **Step 2** mapping and saved your map, quit the mapping process.
-
-Then, in the second terminal:
-
-```bash
-# Load a map and launch AMCL localizer
-roslaunch me5413_world navigation.launch
-```
-
-![rviz_navigation_image](src/me5413_world/media/rviz_navigation.png)
 
 
 
