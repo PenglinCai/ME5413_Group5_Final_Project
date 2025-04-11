@@ -158,7 +158,7 @@ python3 findbridge.py
 #Navigating the roobot to bridge, publish msg to remove obstacle and cross the bridge
 python3 cross_bridge.py
 ```
-if you wish to run all scripts all in once to complete the tasks, using:
+if you wish to run all the above scripts all in once to complete the tasks, using:
 ```bash
 #Running all the scripts sequentially
 python3 start_robot.py
