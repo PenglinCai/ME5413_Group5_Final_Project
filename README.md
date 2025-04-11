@@ -139,8 +139,13 @@ roslaunch me5413_world manual.launch
 
 
 ### 3. Navigation
-
-
+To localize the boxes generated in the area and navigate the robot with a snake-like path, run the findcube.py and snake_path.py simultaneously: 
+```bash
+#Runing algorithm to localize the boxes
+python3 findcube.py
+#Runing algorithm to execute the snake-like path to explore the area
+python3 snake_path.py
+```
 
 ## License
 
