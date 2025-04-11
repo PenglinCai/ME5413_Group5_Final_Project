@@ -40,8 +40,7 @@ VALID_RECT_MIN_SIZE = 0.6
 VALID_RECT_MAX_SIZE = 0.9  
 
 # When fusing clusters with previously detected blocks, merge them if their centers are within this threshold.
-MERGE_DISTANCE_THRESHOLD = 1.3 
-
+MERGE_DISTANCE_THRESHOLD = 0.9
 # Fusion weights for blending the previously found block with the new cluster data.
 FUSION_OLD_WEIGHT = 0.4
 FUSION_NEW_WEIGHT = 0.6
