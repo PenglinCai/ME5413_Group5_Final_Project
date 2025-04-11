@@ -67,9 +67,7 @@ This repo is a ros workspace, containing three rospkgs:
 * `jackal_description` contains the modified jackal robot model descriptions
 * `me5413_world` the main pkg containing the gazebo world, and the launch files
 
-**Note:** If you are working on this project, it is encouraged to fork this repository and work on your own fork!
-
-After forking this repo to your own github:
+Clone this repo:
 
 ```bash
 # Clone your own fork of this repo (assuming home here `~/`)
