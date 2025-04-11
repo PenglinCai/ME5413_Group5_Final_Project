@@ -111,7 +111,7 @@ There are two sources of models needed:
 
 ## How to complete the tasks
 
-### 0. Initializing Gazebo World
+# 0. Initializing Gazebo World
 
 This command will launch the gazebo with the project world
 
@@ -120,7 +120,7 @@ This command will launch the gazebo with the project world
 roslaunch me5413_world world.launch
 ```
 
-### 1. Manual Control
+# 1. Manual Control
 
 If you wish to explore the gazebo world a bit, we provide you a way to manually control the robot around:
 
@@ -133,9 +133,9 @@ roslaunch me5413_world manual.launch
 
 ![rviz_manual_image](src/me5413_world/media/rviz_manual.png)
 
-### 2. Mapping
+# 2. Mapping
 
-# ME5413 Final SLAM
+## ME5413 Final SLAM
 The ROS package '`final_slam`' contains SLAM algorithms utilized in the ME5413 Final Project by Group 5.
 
 ## Cartographer 
@@ -239,7 +239,7 @@ This package contains:
 - `record_slam_data_ros1.sh`: 
   Bash script for recording ROS topics during SLAM sessions.
 
-### 3. Navigation
+# 3. Navigation
 All the scripts are filed in "All_scripts" folder.  
 To localize the boxes generated in the area and navigate the robot with a snake-like path, running: 
 ```bash
