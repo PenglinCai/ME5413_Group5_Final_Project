@@ -38,4 +38,4 @@ The state machine uses subprocesses to launch external scripts and threads to ma
 To start the state machine, execute:
 
 ```bash
-python start_robot.py
+python3 start_robot.py
