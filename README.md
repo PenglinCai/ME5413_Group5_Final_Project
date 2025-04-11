@@ -152,7 +152,7 @@ After finishing the snake-like path, subscribing to the locations, planning the 
 python3 digit_recognition_service_node.py
 #Runing algorithm to visit the boxes
 subscribe_box_pos.py
-
+```
 
 
 
