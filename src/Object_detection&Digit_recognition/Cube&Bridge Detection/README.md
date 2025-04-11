@@ -1,4 +1,4 @@
-# ROS Object Detection Nodes Overview
+# ROS Object Detection Scripts Overview
 
 Both Python scripts subscribe to laser scan data, perform a coordinate frame transformation from the sensor's frame (`front_scan`) to a target map frame (`map`), apply DBSCAN clustering, and then visualize the detection results with markers published over ROS topics.
 
