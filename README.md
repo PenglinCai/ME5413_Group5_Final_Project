@@ -151,7 +151,7 @@ python3 digit_recognition_service_node.py
 #Runing algorithm to visit the boxes and store the numbers in an array
 python3 subscribe_box_pos.py
 ```
-Now, the numbers of randomly generated boxes are recognized, running the algorithms to get the bridge location and cross the bridge:
+Now, the numbers of randomly generated boxes are recognized, running the algorithms to get the bridge centre location and cross the bridge:
 ```bash
 #Running the bridge location dection node
 python3 findbridge.py
