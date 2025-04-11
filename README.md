@@ -146,7 +146,12 @@ python3 findcube.py
 #Runing algorithm to execute the snake-like path to explore the area
 python3 snake_path.py
 ```
-
+After finishing the snake-like path, subscribing to the locations, planning the shortest path by solving the Travelling Sales Man problem to visit each box one by one and recognizing the numbers on the boxes using the perception function:
+```bash
+#Running the perception node
+python3 digit_recognition_service_node.py
+#Runing algorithm to visit the boxes
+subscribe_box_pos.py
 ## License
 
 The [ME5413_Final_Project](https://github.com/NUS-Advanced-Robotics-Centre/ME5413_Final_Project) is released under the [MIT License](https://github.com/NUS-Advanced-Robotics-Centre/ME5413_Final_Project/blob/main/LICENSE)
