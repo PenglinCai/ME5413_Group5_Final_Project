@@ -111,7 +111,7 @@ There are two sources of models needed:
 
 ## How to complete the tasks
 
-### 0. Gazebo World
+### 0. Initializing Gazebo World
 
 This command will launch the gazebo with the project world
 
