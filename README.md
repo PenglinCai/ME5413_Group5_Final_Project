@@ -111,7 +111,7 @@ There are two sources of models needed:
   cp -r ~/ME5413_Group5_Final_Project/src/me5413_world/models/* ~/.gazebo/models
   ```
 
-## Usage
+## How to complete the tasks
 
 ### 0. Gazebo World
 
