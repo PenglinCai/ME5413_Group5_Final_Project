@@ -157,7 +157,7 @@ Now, the numbers of randomly generated boxes are recognized, running the algorit
 ```bash
 #Running the bridge location dection node
 python3 findbridge.py
-#Runing algorithm to visit the boxes and store the numbers in an array
+#Navigating the roobot to bridge and cross the bridge
 python3 cross_bridge.py
 ```
 
