@@ -155,7 +155,7 @@ Now, the numbers of randomly generated boxes are recognized, running the algorit
 ```bash
 #Running the bridge location dection node
 python3 findbridge.py
-#Navigating the roobot to bridge and cross the bridge
+#Navigating the roobot to bridge, publish msg to remove obstacle and cross the bridge
 python3 cross_bridge.py
 ```
 if you wish to run all scripts all in once to complete the tasks, using:
