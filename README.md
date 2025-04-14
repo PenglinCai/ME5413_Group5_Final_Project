@@ -240,7 +240,11 @@ This package contains:
   Bash script for recording ROS topics during SLAM sessions.
 
 # 3. Navigation
-All the scripts are filed in "All_scripts" folder.  
+All the scripts are filed in "All_scripts" folder. Before running the scripts，please first start the gazebo world and navigation package with：
+```bash
+roslaunch me5413_world world.launch
+roslaunch navigation_pkg navigation.launch
+
 To localize the boxes generated in the area and navigate the robot with a snake-like path, running: 
 ```bash
 #Running algorithm to localize the boxes
