@@ -244,6 +244,7 @@ All the scripts are filed in "All_scripts" folder. Before running the scripts，
 ```bash
 roslaunch me5413_world world.launch
 roslaunch navigation_pkg navigation.launch
+```
 
 To localize the boxes generated in the area and navigate the robot with a snake-like path, running: 
 ```bash
